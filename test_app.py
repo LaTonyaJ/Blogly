@@ -16,7 +16,7 @@ class TestFlask(TestCase):
 
         User.query.delete()
 
-        user = User(first_name="Test", last_name="Test", url='')
+        user = User(first_name="Test", last_name="Test", img_url='')
         db.session.add(user)
         db.session.commit()
 
@@ -48,4 +48,14 @@ class TestFlask(TestCase):
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn('<li>Test Name</li>', html)
+            self.assertIn('<li><a href="/users/2">Test Name</a></li>', html)
+
+    # def test_post(self):
+    #     with app.test_client() as client:
+    #         post = {'title': 'Example',
+    #                 'content': 'This is an example post', 'user_id': '1'}
+    #         resp = client.post('/users/1/posts/new',
+    #                            data=post, follow_redirects=True)
+    #         html = resp.get_data(as_text=True)
+
+    #         self.assertIn('<h3>Example</h3>', html)
