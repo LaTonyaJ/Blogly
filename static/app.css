@@ -5,15 +5,32 @@
 }
 
 #user_profile {
-  border: thin solid black;
+  /* border: thin solid black; */
   display: flex;
+  /* flex-direction: column; */
+  width: 50%;
+  margin: 0 auto;
+  justify-content: space-evenly;
 }
 
 #posts {
   text-decoration: none;
+  margin-top: 20px;
 }
 
 button {
   border-radius: 5px;
   border: none;
+}
+
+.edit {
+  background-color: steelblue;
+}
+
+.add {
+  background-color: seagreen;
+}
+
+.delete {
+  background-color: red;
 }

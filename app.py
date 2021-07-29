@@ -150,7 +150,7 @@ def show_editpost_form(post_id):
 def edit_post(post_id):
     """Update/Edit post"""
 
-    post = User.query.get(post_id)
+    post = Post.query.get(post_id)
 
     post.title = request.form['title']
     post.content = request.form['post_text']

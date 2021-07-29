@@ -4,7 +4,7 @@
 <form method="POST" action="/posts/{{post.id}}/edit">
   <input type="text" name="title" placeholder="Post Title" /><br />
   <input type="text" name="post_text" placeholder="Post Body" /><br />
-  <button class="add">Save</button>
+  <button class="add" formaction="/posts/{{post.id}}">Save</button>
   <a href="/users/{{post.user.id}}">Cancel</a>
 </form>
 {% endblock %}

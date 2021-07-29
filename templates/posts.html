@@ -3,7 +3,7 @@ block content %}
 <h3>{{post.title}}</h3>
 <hr />
 <p>{{post.content}}</p>
-<p id="footer">By {{post.user.full_name}}</p>
+<p id="footer"><em>By {{post.user.full_name}}</em></p>
 <form>
   <button formmethod="POST" class="edit" formaction="/posts/{{post.id}}/edit">
     Edit
