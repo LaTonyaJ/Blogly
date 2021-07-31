@@ -23,7 +23,7 @@ today = Post(title='Burgers',
              content='Grilled Burgers are the best burgers.', user_id=1)
 
 king = Post(title='King?',
-            content='Who is the king? I\'m all shoo up!', user_id=2)
+            content='Who is the king? I\'m all shook up!', user_id=2)
 
 motivate = Post(title='Captain',
                 content='Steer your ship with positivity :)', user_id=4)

@@ -1,5 +1,5 @@
 """Models for Blogly."""
-
+from flask import Flask
 from datetime import datetime, timezone
 from flask_sqlalchemy import SQLAlchemy
 
@@ -32,7 +32,7 @@ class User(db.Model):
         db.Text, default=Default_image,
         nullable=False)
 
-    posts = db.relationship('Post')
+    posts = db.relationship('Post', backref='owner')
 
     posts = db.relationship("Post", cascade="all, delete")
 
@@ -61,7 +61,15 @@ class Post(db.Model):
                            nullable=False)
 
     user_id = db.Column(db.Integer,
-                        db.ForeignKey('users.id'),
+                        db.ForeignKey('user.id'),
                         nullable=False)
 
-    user = db.relationship('User')
+
+class Tag(db.Model):
+    """Tag Table"""
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.Text, unique=True)

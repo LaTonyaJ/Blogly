@@ -5,7 +5,7 @@ from flask.templating import render_template
 from flask_debugtoolbar import DebugToolbarExtension
 from logging import debug
 from flask import Flask, redirect, request
-from models import db, connect_db, User, Post
+from models import Default_image, db, connect_db, User, Post
 
 app = Flask(__name__)
 
@@ -44,9 +44,9 @@ def add_user():
     """Get user info from form and save to db then display list of users"""
     first = request.form['first_name']
     last = request.form['last_name']
-    url = request.form['img_url']
+    url = request.form['url']
 
-    user = User(first_name=first, last_name=last, img_url=url)
+    user = User(first_name=first, last_name=last, img_url=Default_image)
     db.session.add(user)
     db.session.commit()
 
