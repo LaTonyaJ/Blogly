@@ -32,7 +32,7 @@ class User(db.Model):
         db.Text, default=Default_image,
         nullable=False)
 
-    posts = db.relationship('Post', backref='owner')
+    posts = db.relationship('Post', backref='user')
 
     posts = db.relationship("Post", cascade="all, delete")
 
@@ -61,8 +61,12 @@ class Post(db.Model):
                            nullable=False)
 
     user_id = db.Column(db.Integer,
-                        db.ForeignKey('user.id'),
+                        db.ForeignKey('users.id'),
                         nullable=False)
+
+    user = db.relationship('User')
+
+    tags = db.relationship('Tag')
 
 
 class Tag(db.Model):
@@ -72,4 +76,17 @@ class Tag(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.Text, unique=True)
+    name = db.Column(db.Text, unique=True, nullable=False)
+
+    posts = db.relationship('Post', secondary='posts_tags', backref='tags')
+
+
+class PostTag(db.Model):
+    """Where post and tags intercept"""
+
+    __tablename__ = 'posts_tags'
+
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)

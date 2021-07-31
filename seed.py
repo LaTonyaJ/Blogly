@@ -1,10 +1,11 @@
-from models import User, Post, db
+from models import User, Post, db, Tag
 from app import app
 
 db.drop_all()
 db.create_all()
 
 User.query.delete()
+Post.query.delete()
 
 tonya = User(first_name='LaTonya', last_name='Johnson',
              img_url='https://st2.depositphotos.com/1445595/11009/v/600/depositphotos_110090198-stock-illustration-african-hair-dreadlocks-hairstyle-wig.jpg')
