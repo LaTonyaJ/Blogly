@@ -29,6 +29,8 @@ king = Post(title='King?',
 motivate = Post(title='Captain',
                 content='Steer your ship with positivity :)', user_id=4)
 
+food_tag = Tag(name='food')
+motivation = Tag(name='motivation')
 
 db.session.add(tonya)
 db.session.add(elvis)
@@ -37,5 +39,7 @@ db.session.add(paul)
 db.session.add(today)
 db.session.add(king)
 db.session.add(motivate)
+db.session.add(food_tag)
+db.session.add(motivation)
 
 db.session.commit()

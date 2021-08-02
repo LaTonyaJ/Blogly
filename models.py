@@ -32,9 +32,10 @@ class User(db.Model):
         db.Text, default=Default_image,
         nullable=False)
 
-    posts = db.relationship('Post', backref='user')
+    posts = db.relationship('Post', backref='user',
+                            cascade='all, delete-orphan')
 
-    posts = db.relationship("Post", cascade="all, delete")
+    # posts = db.relationship("Post", cascade="all, delete-orphan")
 
     @property
     def full_name(self):
@@ -64,9 +65,21 @@ class Post(db.Model):
                         db.ForeignKey('users.id'),
                         nullable=False)
 
-    user = db.relationship('User')
+    # user = db.relationship('User')
 
-    tags = db.relationship('Tag')
+    # tags = db.relationship('Tag', secondary='posts_tags')
+
+
+class Post_Tag(db.Model):
+    """Where post and tags intercept"""
+
+    __tablename__ = 'posts_tags'
+
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'),
+                       primary_key=True)
+
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id', ondelete='CASCADE'), primary_key=True, passive_deletes=True)
 
 
 class Tag(db.Model):
@@ -78,15 +91,4 @@ class Tag(db.Model):
 
     name = db.Column(db.Text, unique=True, nullable=False)
 
-    posts = db.relationship('Post', secondary='posts_tags', backref='tags')
-
-
-class PostTag(db.Model):
-    """Where post and tags intercept"""
-
-    __tablename__ = 'posts_tags'
-
-    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
-
-    post_id = db.Column(db.Integer, db.ForeignKey(
-        'posts.id'), primary_key=True)
+    posts = db.relationship('Post', secondary='posts_tags', backref='tag')
