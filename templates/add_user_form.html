@@ -1,10 +1,13 @@
-{% extends 'index.html' %} {% block title %}
-<h1>Add a user:</h1>
-{% endblock %} {% block content %}
-<form method="POST">
-  <input type="text" name="first_name" placeholder="Enter first name" />
-  <input type="text" name="last_name" placeholder="Enter last name" />
-  <input type="text" name="url" placeholder="Enter image url" />
-  <button>Add!</button>
-</form>
+{% extends 'index.html' %}
+<div class="container">
+  {% block title %}
+  <h1>Add a user:</h1>
+  {% endblock %} {% block content %}
+  <form method="POST">
+    <input type="text" name="first_name" placeholder="Enter first name" />
+    <input type="text" name="last_name" placeholder="Enter last name" />
+    <input type="text" name="url" placeholder="Enter image url" />
+    <button class="add">Add!</button>
+  </form>
+</div>
 {% endblock %}

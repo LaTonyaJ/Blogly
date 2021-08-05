@@ -1,10 +1,37 @@
-{% extends 'index.html' %} {% block title %}
-<h2>Edit Post</h2>
-{% endblock %} {% block content %}
-<form method="POST" action="/posts/{{post.id}}/edit">
-  <input type="text" name="title" placeholder="Post Title" /><br />
-  <input type="text" name="post_text" placeholder="Post Body" /><br />
-  <form action="/posts/{{post.id}}"><button class="add">Save</button></form>
-  <a href="/users/{{post.user.id}}">Cancel</a>
-</form>
+{% extends 'index.html' %}
+<div class="container">
+  {% block title %}
+  <h2>Edit Post</h2>
+  {% endblock %} {% block content %}
+  <form method="POST" action="/posts/{{post.id}}/edit">
+    <input type="text" name="title" placeholder="Post Title" /><br />
+    <input type="text" name="post_text" placeholder="Post Body" /><br />
+    <form action="/posts/{{post.id}}"><button class="add">Save</button></form>
+    <a href="/users/{{post.user.id}}">Cancel</a>
+  </form>
+  <div class="display_tags">
+    <fieldset>
+      <legend>Select Tags</legend>
+      {% for tag in tags %}
+      <div>
+        <input
+          type="checkbox"
+          id="tag_{{tag.id}}"
+          name="tags"
+          value="{{tag.name}}"
+          {%
+          if
+          tag
+          in
+          post.tags
+          %}checked{%
+          endif
+          %}
+        />
+        <label for="tag_{{tag.id}}">{{tag.name}}</label>
+      </div>
+      {% endfor %}
+    </fieldset>
+  </div>
+</div>
 {% endblock %}

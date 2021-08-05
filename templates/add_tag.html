@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+<div class="container">
+  {% block title %}
+  <h3>Create a Tag</h3>
+  {% endblock %} {% block content %}
+  <form method="POST">
+    <input name="name" placeholder="Enter Tag Name" />
+    <a href="/tags">Cancel</a>
+    <button class="add">Submit</button>
+  </form>
+</div>
+{% endblock %}

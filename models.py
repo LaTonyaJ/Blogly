@@ -79,7 +79,7 @@ class Post_Tag(db.Model):
                        primary_key=True)
 
     post_id = db.Column(db.Integer, db.ForeignKey(
-        'posts.id', ondelete='CASCADE'), primary_key=True, passive_deletes=True)
+        'posts.id', ondelete='CASCADE'), primary_key=True)
 
 
 class Tag(db.Model):
@@ -91,4 +91,4 @@ class Tag(db.Model):
 
     name = db.Column(db.Text, unique=True, nullable=False)
 
-    posts = db.relationship('Post', secondary='posts_tags', backref='tag')
+    posts = db.relationship('Post', secondary='posts_tags', backref='tags')

@@ -5,9 +5,7 @@
 }
 
 #user_profile {
-  /* border: thin solid black; */
   display: flex;
-  /* flex-direction: column; */
   width: 50%;
   margin: 0 auto;
   justify-content: space-evenly;
@@ -33,4 +31,9 @@ button {
 
 .delete {
   background-color: red;
+}
+
+.container {
+  margin: 0 auto;
+  width: 50%;
 }

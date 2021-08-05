@@ -1,12 +1,15 @@
-{% extends 'index.html' %} {% block title %}
-<h1>Users</h1>
-{% endblock %} {% block content %}
-<ul>
-  {% for user in users %}
-  <li><a href="/users/{{user.id}}">{{user.full_name}}</a></li>
-  {% endfor %}
-</ul>
-<form action="/users/new">
-  <button class="add">Add User</button>
-</form>
+{% extends 'index.html' %}
+<div class="container">
+  {% block title %}
+  <h1>Users</h1>
+  {% endblock %} {% block content %}
+  <ul>
+    {% for user in users %}
+    <li><a href="/users/{{user.id}}">{{user.full_name}}</a></li>
+    {% endfor %}
+  </ul>
+  <form action="/users/new">
+    <button class="add">Add User</button>
+  </form>
+</div>
 {% endblock %}

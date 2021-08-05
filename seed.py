@@ -1,4 +1,4 @@
-from models import User, Post, db, Tag
+from models import Post_Tag, User, Post, db, Tag
 from app import app
 
 db.drop_all()
@@ -30,7 +30,10 @@ motivate = Post(title='Captain',
                 content='Steer your ship with positivity :)', user_id=4)
 
 food_tag = Tag(name='food')
+
 motivation = Tag(name='motivation')
+
+# t = Post_Tag(post_id=1, tag_id=1)
 
 db.session.add(tonya)
 db.session.add(elvis)
@@ -41,5 +44,6 @@ db.session.add(king)
 db.session.add(motivate)
 db.session.add(food_tag)
 db.session.add(motivation)
+# db.session.add(t)
 
 db.session.commit()

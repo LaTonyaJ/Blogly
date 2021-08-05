@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+<div class="container">
+  {% block title %}
+  <h1>Tags</h1>
+  {% endblock %} {% block content %} {% for tag in tags %}
+  <ul>
+    <li><a href="">{{tag.name}}</a></li>
+  </ul>
+  {% endfor%}
+  <form>
+    <button class="add" formaction="/tags/new">Add Tag</button>
+  </form>
+</div>
+{% endblock %}
