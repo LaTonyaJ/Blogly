@@ -101,7 +101,7 @@ def delete_user(user_id):
     return redirect('/')
 
 
-"""****************************POST ROUTES**************************"""
+"""****************************POSTS ROUTES**************************"""
 
 
 @app.route('/users/<int:user_id>/posts/new')
@@ -158,8 +158,10 @@ def edit_post(post_id):
     """Update/Edit post"""
 
     post = Post.query.get(post_id)
-    post.title = request.form['title']
-    post.content = request.form['post_text']
+    if request.form['title'] and request.form['title'] != '':
+        post.title = request.form['title']
+    if request.form['content'] and request.form['content'] != '':
+        post.content = request.form['post_text']
 
     tag_ids = [int(num) for num in request.form.getlist("tags")]
     post.tags = Tag.query.filter(Tag.id.in_(tag_ids)).all()
