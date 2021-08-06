@@ -33,7 +33,18 @@ button {
   background-color: red;
 }
 
-.container {
+body {
   margin: 0 auto;
-  width: 50%;
+  width: 70%;
+}
+
+#users_list {
+  border: 10px solid black;
+}
+
+.list-group-item {
+  background-color: coral;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 0rem 0.5rem;
 }

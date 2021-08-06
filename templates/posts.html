@@ -1,15 +1,22 @@
 {% extends 'index.html' %}
 <div class="container">
-  {% block title %}Post: {{post.id}}{% endblock %} {% block content %}
-  <h3>{{post.title}}</h3>
+  {% block title %}
+  <h4>Post: {{post.id}}</h4>
+  {% endblock %} {% block content %}
+  <h2>{{post.title}}</h2>
   <hr />
   <p>{{post.content}}</p>
+  <br />
   <p id="footer"><em>By {{post.user.full_name}}</em></p>
   <div>
-    Tags:{% for tag in post.tags %}
-    <div class="tags">{{tag.name}}</div>
-    {% endfor %}
+    Tags:
+    <ul class="list-group list-group-horizontal-sm">
+      {% for tag in post.tags %}
+      <li class="list-group-item">{{tag.name}}</li>
+      {% endfor %}
+    </ul>
   </div>
+  <br />
   <form>
     <button class="edit" formaction="/posts/{{post.id}}/edit">Edit</button>
     <button

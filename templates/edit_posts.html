@@ -4,10 +4,18 @@
   <h2>Edit Post</h2>
   {% endblock %} {% block content %}
   <form method="POST" action="/posts/{{post.id}}/edit">
-    <input type="text" name="title" placeholder="Post Title" /><br />
-    <input type="text" name="post_text" placeholder="Post Body" /><br />
-    <button class="add" type="submit">Edit</button>
-    <a href="/users/{{post.user.id}}">Cancel</a>
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      placeholder="Post Title"
+    /><br />
+    <input
+      type="text"
+      name="post_text"
+      placeholder="Post Body"
+      class="form-control"
+    /><br />
     <div class="display_tags">
       <fieldset>
         <legend>Select Tags</legend>
@@ -32,6 +40,8 @@
         {% endfor %}
       </fieldset>
     </div>
+    <button class="add" type="submit">Edit</button>
+    <a href="/users/{{post.user.id}}">Cancel</a>
   </form>
 </div>
 {% endblock %}
