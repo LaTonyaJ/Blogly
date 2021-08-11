@@ -156,13 +156,13 @@ def show_editpost_form(post_id):
 @app.route('/posts/<int:post_id>/edit', methods=['POST'])
 def edit_post(post_id):
     """Update/Edit post"""
-
     post = Post.query.get(post_id)
+
     if request.form['title'] and request.form['title'] != '':
         post.title = request.form['title']
     if request.form['content'] and request.form['content'] != '':
-        post.content = request.form['post_text']
-
+        post.content = request.form['content']
+    print('Form:', request.form)
     tag_ids = [int(num) for num in request.form.getlist("tags")]
     post.tags = Tag.query.filter(Tag.id.in_(tag_ids)).all()
 
